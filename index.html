@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>איך להיות מומחה בכל תחום | מתוכן לתוכנה</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#8B5CF6',
+                        'primary-dark': '#7C3AED',
+                        background: '#111827',
+                        surface: '#1F2937',
+                        'text-light': '#E5E7EB',
+                        'text-muted': '#9CA3AF',
+                        'accent-yellow': '#FBBF24',
+                        'accent-red': '#F87171',
+                        'accent-green': '#34D399',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom scrollbar styles */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #111827;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: #7C3AED;
+            border-radius: 10px;
+            border: 2px solid #111827;
+        }
+        /* Firefox scrollbar */
+        html {
+            scrollbar-width: thin;
+            scrollbar-color: #7C3AED #111827;
+        }
+    </style>
+</head>
+<body class="bg-background text-[#E5E7EB] min-h-screen flex flex-col">
+    <!-- App Bar -->
+    <header class="bg-surface shadow-md py-3 px-6 flex justify-between items-center sticky top-0 z-50 border-b border-primary/20">
+        
+        <!-- Logo on right side of business name -->
+        <div class="flex items-center">
+            <div class="h-10 w-10 rounded-full overflow-hidden ml-3">
+                <img src="./images/logo.png" alt="Logo" class="w-full h-full object-cover">
+            </div>
+            <div class="text-xl font-bold text-primary">מתוכן לתוכנה</div>
+        </div>
+        
+        <!-- Course title on left side -->
+        <div class="text-lg font-semibold text-[#E5E7EB]">
+            איך להיות מומחה בכל תחום
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <div class="flex flex-1 overflow-hidden">
+        <!-- Sidebar -->
+        <aside class="w-72 bg-surface p-5 h-[calc(100vh-3.5rem)] fixed top-[3.5rem] right-0 overflow-y-auto border-l border-primary/20">
+            <h1 class="text-xl font-bold text-primary mb-6 pb-3 border-b border-primary/30 text-center">אתר עזר לקורס</h1>
+            <nav>
+                <ul id="main-nav">
+                    <li class="mb-2">
+                        <a href="lesson1.html" data-lesson="lesson1" class="nav-link bg-primary text-white block py-2 px-4 rounded-md font-medium">
+                            שיעור 1: יסודות ואסטרטגיה
+                        </a>
+                        <ul class="mt-2 mr-4 pr-3 border-r-2 border-primary/30">
+                            <li class="mb-1">
+                                <a href="lesson1.html#l1-intro" class="text-[#9CA3AF] hover:text-[#E5E7EB] hover:bg-primary/10 block py-2 px-3 rounded-md transition">
+                                    1. הבנה ומגבלות
+                                </a>
+                            </li>
+                            <li class="mb-1">
+                                <a href="lesson1.html#l1-prompting" class="text-[#9CA3AF] hover:text-[#E5E7EB] hover:bg-primary/10 block py-2 px-3 rounded-md transition">
+                                    2. ניסוח פרומפטים
+                                </a>
+                            </li>
+                            <li class="mb-1">
+                                <a href="lesson1.html#l1-tools" class="text-[#9CA3AF] hover:text-[#E5E7EB] hover:bg-primary/10 block py-2 px-3 rounded-md transition">
+                                    3. ארגז כלים
+                                </a>
+                            </li>
+                            <li class="mb-1">
+                                <a href="lesson1.html#l1-algorithms" class="text-[#9CA3AF] hover:text-[#E5E7EB] hover:bg-primary/10 block py-2 px-3 rounded-md transition">
+                                    4. אלגוריתמים
+                                </a>
+                            </li>
+                            <li class="mb-1">
+                                <a href="lesson1.html#l1-exercises" class="text-[#9CA3AF] hover:text-[#E5E7EB] hover:bg-primary/10 block py-2 px-3 rounded-md transition">
+                                    5. תרגילים
+                                </a>
+                            </li>
+                            <li class="mb-1">
+                                <a href="lesson1.html#l1-next" class="text-[#9CA3AF] hover:text-[#E5E7EB] hover:bg-primary/10 block py-2 px-3 rounded-md transition">
+                                    6. מבט קדימה
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="mb-2 mt-6">
+                        <a href="#" class="text-[#9CA3AF] italic block py-2 px-4 rounded-md font-medium opacity-70 cursor-not-allowed">
+                            שיעור 2 (בקרוב)
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="#" class="text-[#9CA3AF] italic block py-2 px-4 rounded-md font-medium opacity-70 cursor-not-allowed">
+                            שיעור 3 (בקרוב)
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="flex-1 p-8 mr-72 overflow-y-auto" id="content-container">
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-surface rounded-lg p-8 shadow-lg border border-primary/20">
+                    <h1 class="text-3xl font-bold text-primary mb-6 flex items-center">
+                        <i class="fas fa-graduation-cap ml-3"></i>
+                        ברוכים הבאים לקורס
+                    </h1>
+                    <p class="text-xl mb-6">בחרו שיעור מהתפריט הימני להתחלת הלמידה</p>
+                    
+                    <div class="bg-primary/10 p-6 rounded-lg border border-primary/30 mb-8">
+                        <h2 class="text-2xl font-bold text-primary mb-4 flex items-center">
+                            <i class="fas fa-lightbulb ml-3"></i>
+                            אודות הקורס
+                        </h2>
+                        <p class="mb-4">קורס זה מיועד לעזור לכם להפוך למומחים בכל תחום שתבחרו באמצעות שימוש יעיל בכלי AI. תלמדו כיצד לנסח פרומפטים אפקטיביים, לאתר ולארגן מידע, ולבנות מסלולי למידה מותאמים אישית.</p>
+                        <p>המדריך מחולק למספר שיעורים, כאשר כל שיעור מתמקד בהיבט שונה של תהליך הלמידה וההתמקצעות.</p>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="bg-surface border border-primary/20 rounded-lg p-6 shadow-md hover:shadow-lg transition">
+                            <div class="text-primary text-2xl mb-3"><i class="fas fa-map-marked-alt"></i></div>
+                            <h3 class="font-bold text-lg text-primary mb-2">מיפוי ידע</h3>
+                            <p class="text-[#9CA3AF]">שיטות יעילות למיפוי תחומי ידע חדשים ובניית תוכניות למידה.</p>
+                        </div>
+                        <div class="bg-surface border border-primary/20 rounded-lg p-6 shadow-md hover:shadow-lg transition">
+                            <div class="text-primary text-2xl mb-3"><i class="fas fa-tools"></i></div>
+                            <h3 class="font-bold text-lg text-primary mb-2">ארגז כלים דיגיטלי</h3>
+                            <p class="text-[#9CA3AF]">כלי AI מובילים ללמידה, מחקר ויצירת תוכן בכל תחום.</p>
+                        </div>
+                        <div class="bg-surface border border-primary/20 rounded-lg p-6 shadow-md hover:shadow-lg transition">
+                            <div class="text-primary text-2xl mb-3"><i class="fas fa-brain"></i></div>
+                            <h3 class="font-bold text-lg text-primary mb-2">מיומנויות חשיבה</h3>
+                            <p class="text-[#9CA3AF]">טכניקות לפיתוח חשיבה ביקורתית ויצירתית בעידן ה-AI.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Handle link clicks to load lesson content
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const lessonPath = this.getAttribute('href');
+                    if (lessonPath && !this.classList.contains('cursor-not-allowed')) {
+                        window.location.href = lessonPath;
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

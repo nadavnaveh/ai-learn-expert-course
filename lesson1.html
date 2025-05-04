@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>שיעור 1: יסודות ואסטרטגיה | איך להיות מומחה בכל תחום</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#8B5CF6',
+                        'primary-dark': '#7C3AED',
+                        background: '#111827',
+                        surface: '#1F2937',
+                        'text-light': '#E5E7EB',
+                        'text-muted': '#9CA3AF',
+                        'accent-yellow': '#FBBF24',
+                        'accent-red': '#F87171',
+                        'accent-green': '#34D399',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom scrollbar styles */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #111827;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: #7C3AED;
+            border-radius: 10px;
+            border: 2px solid #111827;
+        }
+        /* Firefox scrollbar */
+        html {
+            scrollbar-width: thin;
+            scrollbar-color: #7C3AED #111827;
+        }
+
+        pre {
+            direction: ltr;
+            text-align: left;
+        }
+    </style>
+</head>
+<body class="bg-background text-[#E5E7EB] min-h-screen flex flex-col">
+    <!-- App Bar -->
+    <header class="bg-surface shadow-md py-3 px-6 flex justify-between items-center sticky top-0 z-50 border-b border-primary/20">
+        <div class="flex items-center space-x-4 space-x-reverse">
+            <a href="index.html" class="text-xl font-bold text-primary">מתוכן לתוכנה</a>
+        </div>
+        
+        <!-- Logo placeholder - center -->
+        <a href="index.html" class="h-10 w-10 rounded-full bg-primary flex items-center justify-center">
+            <span class="text-white font-bold">מל</span>
+        </a>
+        
+        <!-- Course title -->
+        <div class="text-lg font-semibold text-[#E5E7EB]">
+            <a href="index.html">איך להיות מומחה בכל תחום</a>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <div class="flex flex-1 overflow-hidden">
+        <!-- Sidebar -->
+        <aside class="w-72 bg-surface p-5 h-[calc(100vh-3.5rem)] fixed top-[3.5rem] right-0 overflow-y-auto border-l border-primary/20">
+            <h1 class="text-xl font-bold text-primary mb-6 pb-3 border-b border-primary/30 text-center">המדריך הפרקטי ל-AI</h1>
+            <nav>
+                <ul id="main-nav">
+                    <li class="mb-2">
+                        <a href="lesson1.html" data-lesson="lesson1" class="nav-link bg-primary text-white block py-2 px-4 rounded-md font-medium">
+                            שיעור 1: יסודות ואסטרטגיה
+                        </a>
+                        <ul class="mt-2 mr-4 pr-3 border-r-2 border-primary/30">
+                            <li class="mb-1">
+                                <a href="#l1-intro" class="text-[#9CA3AF] hover:text-[#E5E7EB] hover:bg-primary/10 block py-2 px-3 rounded-md transition">
+                                    1. הבנה ומגבלות
+                                </a>
+                            </li>
+                            <li class="mb-1">
+                                <a href="#l1-prompting" class="text-[#9CA3AF] hover:text-[#E5E7EB] hover:bg-primary/10 block py-2 px-3 rounded-md transition">
+                                    2. ניסוח פרומפטים
+                                </a>
+                            </li>
+                            <li class="mb-1">
+                                <a href="#l1-tools" class="text-[#9CA3AF] hover:text-[#E5E7EB] hover:bg-primary/10 block py-2 px-3 rounded-md transition">
+                                    3. ארגז כלים
+                                </a>
+                            </li>
+                            <li class="mb-1">
+                                <a href="#l1-algorithms" class="text-[#9CA3AF] hover:text-[#E5E7EB] hover:bg-primary/10 block py-2 px-3 rounded-md transition">
+                                    4. אלגוריתמים
+                                </a>
+                            </li>
+                            <li class="mb-1">
+                                <a href="#l1-exercises" class="text-[#9CA3AF] hover:text-[#E5E7EB] hover:bg-primary/10 block py-2 px-3 rounded-md transition">
+                                    5. תרגילים
+                                </a>
+                            </li>
+                            <li class="mb-1">
+                                <a href="#l1-next" class="text-[#9CA3AF] hover:text-[#E5E7EB] hover:bg-primary/10 block py-2 px-3 rounded-md transition">
+                                    6. מבט קדימה
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="mb-2 mt-6">
+                        <a href="#" class="text-[#9CA3AF] italic block py-2 px-4 rounded-md font-medium opacity-70 cursor-not-allowed">
+                            שיעור 2 (בקרוב)
+                        </a>
+                    </li>
+                    <li class="mb-2">
+                        <a href="#" class="text-[#9CA3AF] italic block py-2 px-4 rounded-md font-medium opacity-70 cursor-not-allowed">
+                            שיעור 3 (בקרוב)
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="flex-1 p-8 mr-72 overflow-y-auto">
+            <div class="max-w-4xl mx-auto">
+                <!-- Lesson 1 Content -->
+                <section id="lesson1">
+                    <!-- Article 1: Understanding -->
+                    <article id="l1-intro" class="mb-12 pt-5 pb-8 border-b border-primary/20">
+                        <h2 class="text-2xl font-bold text-primary mb-6 flex items-center">
+                            <i class="fas fa-exclamation-triangle ml-3"></i>
+                            1. הבנה פרקטית: מגבלות והבחנות חשובות
+                        </h2>
+                        <p class="text-lg mb-6">לפני שצוללים לשימוש, חשוב להכיר במגבלות כדי להשתמש בכלים בצורה יעילה ואחראית:</p>
+
+                        <div class="bg-red-900/10 border-r-4 border-accent-red p-4 rounded mb-6">
+                            <h4 class="font-bold text-lg mb-2 flex items-center"><i class="fas fa-ghost ml-2"></i>הזיות (Hallucinations)</h4>
+                            <p>AI יכול "להמציא" מידע ולהציג אותו כעובדה. <strong class="text-accent-yellow">פעולה:</strong> תמיד לאמת מידע קריטי ממקורות נוספים, במיוחד עובדות, נתונים וטענות מרכזיות.</p>
+                        </div>
+
+                        <h4 class="font-bold text-xl mb-3 flex items-center"><i class="fas fa-database ml-2"></i>תלות בנתוני אימון</h4>
+                        <ul class="list-disc pr-6 mb-6 space-y-2">
+                            <li><strong class="text-accent-yellow">תאריך גבול (Cutoff Date):</strong> חלק מהמודלים לא מעודכנים לאירועים אחרונים. <strong class="text-accent-yellow">פעולה:</strong> בדקו אם המודל מחובר לאינטרנט או השתמשו בכלים ייעודיים למידע עדכני.</li>
+                            <li><strong class="text-accent-yellow">הטיות (Biases):</strong> AI יכול לשקף הטיות מנתוני האימון. <strong class="text-accent-yellow">פעולה:</strong> היו מודעים לכך ובחנו תשובות בצורה ביקורתית, במיוחד בנושאים רגישים.</li>
+                        </ul>
+
+                        <h4 class="font-bold text-xl mb-3 flex items-center"><i class="fas fa-wifi ml-2"></i>מודלים מחוברים לאינטרנט vs. "סגורים"</h4>
+                        <ul class="list-disc pr-6 mb-6 space-y-2">
+                            <li><strong class="text-accent-yellow">מחוברים (למשל, Gemini, ChatGPT עם Browsing, Perplexity):</strong> יכולים לגשת למידע עדכני ולספק מקורות. <strong class="text-accent-yellow">יתרון פרקטי:</strong> טובים לבדיקת עובדות אקטואליות ומחקרים חדשים.</li>
+                            <li><strong class="text-accent-yellow">"סגורים" (ללא גישה חיה לרשת):</strong> מוגבלים למידע באימון. <strong class="text-accent-yellow">יתרון פרקטי:</strong> מהירים יותר ליצירה כללית, אך דורשים אימות קפדני יותר לעובדות.</li>
+                        </ul>
+                        <p class="text-lg"><strong class="text-accent-yellow">פעולה כללית:</strong> בדקו אם המודל מציין חיפוש או מספק מקורות. גם אם כן, ודאו את איכותם.</p>
+                    </article>
+
+                    <!-- Article 2: Prompting -->
+                    <article id="l1-prompting" class="mb-12 pt-5 pb-8 border-b border-primary/20">
+                        <h2 class="text-2xl font-bold text-primary mb-6 flex items-center">
+                            <i class="fas fa-keyboard ml-3"></i>
+                            2. מיומנות הליבה: ניסוח פרומפטים יעילים
+                        </h2>
+                        <p class="text-lg mb-6">איכות הפרומפט קובעת את איכות התוצאה. להלן טכניקות פרקטיות:</p>
+
+                        <div class="bg-surface p-6 rounded-lg mb-6 shadow-md border border-primary/20">
+                            <h4 class="font-bold text-xl mb-2 flex items-center"><i class="fas fa-user-tie ml-2"></i>Role Prompting (הגדרת תפקיד)</h4>
+                            <p class="mb-2"><strong class="text-accent-yellow">מה:</strong> הנחו את ה-AI לפעול כדמות או מומחה ספציפי.</p>
+                            <p class="mb-2"><strong class="text-accent-yellow">דוגמה:</strong> <code class="bg-background/70 px-2 py-1 rounded">"פעל כיועץ שיווק עם 15 שנות ניסיון בתחום ה-B2B. הסבר לי..."</code></p>
+                            <p><strong class="text-accent-yellow">מתי להשתמש:</strong> לקבלת סגנון, טון, רמת פירוט או פרספקטיבה ספציפיים.</p>
+                        </div>
+
+                        <div class="bg-surface p-6 rounded-lg mb-6 shadow-md border border-primary/20">
+                            <h4 class="font-bold text-xl mb-2 flex items-center"><i class="fas fa-sitemap ml-2"></i>Task Decomposition (פירוק משימות)</h4>
+                            <p class="mb-2"><strong class="text-accent-yellow">מה:</strong> פרקו משימה מורכבת לשלבים ברורים בפרומפט אחד.</p>
+                            <p class="mb-2"><strong class="text-accent-yellow">דוגמה:</strong> <code class="bg-background/70 px-2 py-1 rounded">"בצע את השלבים הבאים: 1. הגדר את המושג SEO. 2. פרט 3 טכניקות SEO עיקריות. 3. הסבר כיצד למדוד הצלחה ב-SEO."</code></p>
+                            <p><strong class="text-accent-yellow">מתי להשתמש:</strong> למשימות רב-שלביות, להבטחת כיסוי מקיף, לשליטה במבנה.</p>
+                        </div>
+
+                        <div class="bg-surface p-6 rounded-lg mb-6 shadow-md border border-primary/20">
+                            <h4 class="font-bold text-xl mb-2 flex items-center"><i class="fas fa-list-ol ml-2"></i>Few-Shot Learning (למידה מדוגמאות)</h4>
+                            <p class="mb-2"><strong class="text-accent-yellow">מה:</strong> ספקו ל-AI דוגמה אחת או יותר של הפלט הרצוי.</p>
+                            <p class="mb-2"><strong class="text-accent-yellow">דוגמה:</strong> <code class="bg-background/70 px-2 py-1 rounded">"הנה דוגמה לסיכום מאמר: [דוגמה קצרה]. כעת, סכם את המאמר הבא באותו מבנה: [טקסט מאמר]."</code></p>
+                            <p><strong class="text-accent-yellow">מתי להשתמש:</strong> כשנדרש פורמט מדויק (טבלה, JSON), סגנון ספציפי, או כשהוראות מורכבות.</p>
+                        </div>
+
+                        <div class="bg-surface p-6 rounded-lg mb-6 shadow-md border border-primary/20">
+                            <h4 class="font-bold text-xl mb-2 flex items-center"><i class="fas fa-brain ml-2"></i>Chain-of-Thought (שרשרת חשיבה - CoT)</h4>
+                            <p class="mb-2"><strong class="text-accent-yellow">מה:</strong> בקשו מה-AI במפורש לחשוב צעד-אחר-צעד לפני מתן התשובה.</p>
+                            <p class="mb-2"><strong class="text-accent-yellow">דוגמה:</strong> <code class="bg-background/70 px-2 py-1 rounded">"חשוב צעד-אחר-צעד וענה: מהן ההשלכות האפשריות של שימוש ב-AI בשירות לקוחות? התייחס ליתרונות, חסרונות ושיקולים אתיים."</code></p>
+                            <p><strong class="text-accent-yellow">מתי להשתמש:</strong> לבעיות הדורשות היגיון, ניתוח, פתרון בעיות, או כשרוצים להבין את "תהליך החשיבה". חיוני למודלי Reasoning.</p>
+                        </div>
+
+                        <div class="bg-surface p-6 rounded-lg mb-6 shadow-md border border-primary/20">
+                            <h4 class="font-bold text-xl mb-2 flex items-center"><i class="fas fa-sliders-h ml-2"></i>Specific Constraints (אילוצים ספציפיים)</h4>
+                            <p class="mb-2"><strong class="text-accent-yellow">מה:</strong> הגדירו פרמטרים ברורים לתשובה.</p>
+                            <p class="mb-2"><strong class="text-accent-yellow">דוגמה:</strong> <code class="bg-background/70 px-2 py-1 rounded">"כתוב סיכום של עד 200 מילים בנושא X, המיועד למנהלים בכירים, והימנע מז'רגון טכני."</code></p>
+                            <p><strong class="text-accent-yellow">מתי להשתמש:</strong> לשליטה באורך, קהל יעד, טון, הכללה/הימנעות מנושאים.</p>
+                        </div>
+
+                        <div class="bg-amber-900/10 border-r-4 border-accent-yellow p-4 rounded">
+                            <p class="mb-0"><strong class="text-accent-yellow">טיפ פרקטי:</strong> שלבו מספר טכניקות בפרומפט אחד לקבלת תוצאות מיטביות! (למשל, הגדרת תפקיד + פירוק משימה + אילוצים).</p>
+                        </div>
+                    </article>
+
+                    <!-- Article 3: Tools -->
+                    <article id="l1-tools" class="mb-12 pt-5 pb-8 border-b border-primary/20">
+                        <h2 class="text-2xl font-bold text-primary mb-6 flex items-center">
+                            <i class="fas fa-tools ml-3"></i>
+                            3. ארגז הכלים: מודלי AI מרכזיים (הרצאה 1)
+                        </h2>
+
+                        <div class="space-y-4">
+                            <div class="bg-surface p-6 rounded-lg shadow-md border-r-4 border-primary-dark">
+                                <h4 class="font-bold text-xl mb-2 flex items-center"><i class="fas fa-robot ml-2 text-primary"></i>ChatGPT (OpenAI)</h4>
+                                <p class="mb-3"><strong class="text-accent-yellow">חוזקות:</strong> הבנת הקשר, מולטימדיה (GPT-4o), ניתוח נתונים, כתיבת קוד, חיפוש רשת (בגרסאות מסוימות).</p>
+                                <a href="https://chat.openai.com/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-primary font-bold hover:text-primary-dark transition">
+                                    פתח את ChatGPT 
+                                    <i class="fas fa-external-link-alt mr-2 text-xs"></i>
+                                </a>
+                            </div>
+
+                            <div class="bg-surface p-6 rounded-lg shadow-md border-r-4 border-primary-dark">
+                                <h4 class="font-bold text-xl mb-2 flex items-center"><i class="fas fa-book-open ml-2 text-primary"></i>Claude (Anthropic)</h4>
+                                <p class="mb-3"><strong class="text-accent-yellow">חוזקות:</strong> עיבוד טקסטים ארוכים, חלון הקשר גדול, ניתוח קוד, דגש על בטיחות.</p>
+                                <a href="https://claude.ai/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-primary font-bold hover:text-primary-dark transition">
+                                    פתח את Claude 
+                                    <i class="fas fa-external-link-alt mr-2 text-xs"></i>
+                                </a>
+                            </div>
+
+                            <div class="bg-surface p-6 rounded-lg shadow-md border-r-4 border-primary-dark">
+                                <h4 class="font-bold text-xl mb-2 flex items-center"><i class="fas fa-star ml-2 text-primary"></i>Gemini (Google)</h4>
+                                <p class="mb-3"><strong class="text-accent-yellow">חוזקות:</strong> מולטימדיה, יכולות Reasoning גבוהות, אינטגרציה עם Google, חלון הקשר ענק.</p>
+                                <div class="space-x-4 space-x-reverse">
+                                    <a href="https://gemini.google.com/app" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-primary font-bold hover:text-primary-dark transition">
+                                        פתח את Gemini (ראשי) 
+                                        <i class="fas fa-external-link-alt mr-2 text-xs"></i>
+                                    </a>
+                                    <a href="https://aistudio.google.com/prompts/new_chat" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-primary font-bold hover:text-primary-dark transition">
+                                        פתח את AI Studio (מתקדם) 
+                                        <i class="fas fa-external-link-alt mr-2 text-xs"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="bg-surface p-6 rounded-lg shadow-md border-r-4 border-primary-dark">
+                                <h4 class="font-bold text-xl mb-2 flex items-center"><i class="fas fa-code ml-2 text-primary"></i>DeepSeek</h4>
+                                <p class="mb-3"><strong class="text-accent-yellow">חוזקות:</strong> ביצועים גבוהים בקוד ומתמטיקה, יעילות חישובית (MoE).</p>
+                                <a href="https://chat.deepseek.com/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-primary font-bold hover:text-primary-dark transition">
+                                    פתח את DeepSeek 
+                                    <i class="fas fa-external-link-alt mr-2 text-xs"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <p class="text-lg mt-6"><strong class="text-accent-yellow">הערה חשובה:</strong> מודלי "Reasoning" (חשיבה) הם לרוב יכולות מתקדמות בגרסאות העדכניות של המודלים המובילים, לא תמיד כלי נפרד.</p>
+                    </article>
+
+                    <!-- Article 4: Algorithms -->
+                    <article id="l1-algorithms" class="mb-12 pt-5 pb-8 border-b border-primary/20">
+                        <h2 class="text-2xl font-bold text-primary mb-6 flex items-center">
+                            <i class="fas fa-project-diagram ml-3"></i>
+                            4. תהליך העבודה הפרקטי: אלגוריתמים ללמידה
+                        </h2>
+
+                        <h3 class="text-xl font-bold text-text-light mb-4">אלגוריתם 1: בחירה וחידוד נושא התמחות</h3>
+                        <div class="space-y-4 mb-8">
+                            <div class="p-4 border border-primary/20 rounded-lg bg-surface/50 shadow">
+                                <h4 class="font-bold text-lg mb-2 flex items-center">
+                                    <span class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center ml-3 flex-shrink-0">1</span>
+                                    זיהוי ראשוני
+                                </h4>
+                                <p>בחרו תחום כללי שמעניין אתכם.</p>
+                            </div>
+                            <div class="p-4 border border-primary/20 rounded-lg bg-surface/50 shadow">
+                                <h4 class="font-bold text-lg mb-2 flex items-center">
+                                    <span class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center ml-3 flex-shrink-0">2</span>
+                                    מיקוד ראשוני
+                                </h4>
+                                <p>צמצמו את התחום לנושא ספציפי יותר.</p>
+                            </div>
+                            <div class="p-4 border border-primary/20 rounded-lg bg-surface/50 shadow">
+                                <h4 class="font-bold text-lg mb-2 flex items-center">
+                                    <span class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center ml-3 flex-shrink-0">3</span>
+                                    שיחה עם AI (מודל בסיסי)
+                                </h4>
+                                <p>השתמשו בפרומפטים פתוחים לחקירה: "מהם תתי-התחומים?", "מהן המגמות?", "אילו אתגרים קיימים?".</p>
+                            </div>
+                            <div class="p-4 border border-primary/20 rounded-lg bg-surface/50 shadow">
+                                <h4 class="font-bold text-lg mb-2 flex items-center">
+                                    <span class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center ml-3 flex-shrink-0">4</span>
+                                    חידוד נוסף
+                                </h4>
+                                <p>בחרו נישה ספציפית יותר להתמקד בה.</p>
+                            </div>
+                            <div class="p-4 border border-primary/20 rounded-lg bg-surface/50 shadow">
+                                <h4 class="font-bold text-lg mb-2 flex items-center">
+                                    <span class="w-8 h-8 rounded-full bg-primary text-white flex items-center justify-center ml-3 flex-shrink-0">5</span>
+                                    בדיקת היתכנות ראשונית
+                                </h4>
+                                <p>שאלו את ה-AI: "אילו סוגי מקורות מידע זמינים ללמידה על [הנישה]?"</p>
+                            </div>
+                        </div>
+
+                        <h3 class="text-xl font-bold text-text-light mb-4">אלגוריתם 2: מיפוי מהיר של תחום חדש (60-90 דקות)</h3>
+                        <p class="mb-4">ענו על השאלות הבאות בעזרת מודל AI:</p>
+                        <ol class="list-decimal pr-8 mb-6 space-y-2">
+                            <li><strong class="text-accent-yellow">מושגי יסוד:</strong> מהם 10-15 המושגים/תיאוריות/כלים המרכזיים ומדוע הם חשובים?</li>
+                            <li><strong class="text-accent-yellow">מומחים מובילים:</strong> מיהם 5-7 המשפיעים ביותר, מה תרומתם ופרסומיהם?</li>
+                            <li><strong class="text-accent-yellow">סוגיות ואתגרים:</strong> מהן הסוגיות הפתוחות/אתגרים מרכזיים כיום וגישות להתמודדות?</li>
+                            <li><strong class="text-accent-yellow">תתי-תחומים והקשרים:</strong> אילו תתי-תחומים קיימים, איך קשורים, ומה 'חם' כרגע?</li>
+                            <li><strong class="text-accent-yellow">היסטוריה ועתיד:</strong> מהי ההיסטוריה, נקודות מפנה ומגמות עתידיות?</li>
+                        </ol>
+                        <p class="text-lg"><strong class="text-accent-yellow">תוצר:</strong> סכמו את התשובות במסמך או מפת חשיבה ליצירת מפת ידע ראשונית.</p>
+
+                        <div class="bg-primary/5 border border-primary rounded-lg p-6 mt-8 relative shadow-lg">
+                            <button class="copy-btn absolute top-4 left-4 bg-primary text-white py-2 px-4 rounded-md font-bold hover:bg-primary-dark transition flex items-center" id="copyPromptBtn">
+                                <i class="fas fa-copy ml-2"></i> העתק פרומפט
+                            </button>
+                            <h3 class="text-xl font-bold text-primary mb-4">אלגוריתם 3: בניית תוכנית למידה עם מודל חשיבה (Reasoning)</h3>
+                            <p class="mb-4">התאימו את הפרומפט הבא לנושא ולרשימת הנושאים שלכם:</p>
+                            <pre class="bg-[#2d3748] text-[#E5E7EB] p-5 rounded-lg border border-primary/30 overflow-x-auto text-sm leading-relaxed whitespace-pre-wrap">## פרומפט לבניית תוכנית למידה מותאמת אישית ##
+
+# חלק 1: קונטקסט ומטרה #
+אתה מומחה בבניית תוכניות למידה מותאמות אישית ובעל ידע נרחב בתחום [הנושא הכללי שלכם, למשל: שיווק דיגיטלי]. אני רוצה ללמוד ולהתמקצע בתת-התחום הספציפי של [הנישה שלכם, למשל: שיווק בפייסבוק ואינסטגרם לעסקים קטנים]. בעזרת מיפוי ראשוני, זיהיתי את הנושאים המרכזיים הבאים שאני צריך ללמוד:
+[הדביקו כאן את רשימת הנושאים שזיהיתם באלגוריתם 2 או ממקור אחר]
+
+המטרה שלי היא להגיע לרמה שתאפשר לי [תארו את המטרה המעשית שלכם, למשל: לנהל קמפיינים בסיסיים באופן עצמאי / להבין לעומק את האסטרטגיות המרכזיות / לכתוב מאמר מקיף בנושא].
+
+# חלק 2: הבקשה האלגוריתמית #
+בהתבסס על רשימת הנושאים שסיפקתי ועל מטרת הלמידה שלי, אני מבקש שתבנה עבורי תוכנית למידה מפורטת, מצטברת והדרגתית. חשוב צעד-אחר-צעד ובצע את השלבים הבאים:
+
+1.  **ניתוח ושיפור הרשימה:** נתח את רשימת הנושאים שסיפקתי. האם יש נושאים קריטיים חסרים להשגת המטרה שלי? האם יש נושאים מיותרים בשלב זה? האם ניתן לקבץ נושאים קשורים? הצג את הרשימה המעודכנת והמנומקת.
+2.  **ארגון לוגי והסבר:** סדר את הנושאים (מהרשימה המעודכנת) בסדר לוגי ומצטבר, כך שכל נושא יבנה על הידע שנרכש בנושאים הקודמים. הסבר בבירור את הרציונל מאחורי הסדר שבחרת ואת התלויות המרכזיות בין הנושאים.
+3.  **חלוקה לשלבים:** חלק את תוכנית הלמידה לשלבים הגיוניים (למשל, 3-5 שלבים) עם כותרת ברורה לכל שלב המייצגת את הידע/המיומנות הנרכשים בו. ציין אילו נושאים שייכים לכל שלב.
+4.  **לוח זמנים מוערך:** הצע לוח זמנים מציאותי ללמידה, עם הערכת זמן (שעות/ימים/שבועות) הנדרשת לכל שלב ולנושאים המרכזיים בו. הנח שאני יכול להקדיש [ציינו כמה שעות] שעות שבועיות ללמידה.
+5.  **פרויקטים מעשיים:** הגדר פרויקט מעשי קטן או תרגיל מסכם לכל שלב בתוכנית. הפרויקט צריך לאפשר לי ליישם ולתרגל את הנושאים שנלמדו באותו שלב.
+6.  **זיהוי תלויות קריטיות:** ציין במפורש אילו נושאים מהווים "צוואר בקבוק" או תנאי הכרחי להבנת נושאים מתקדמים יותר בתוכנית. הצע דרכים לוודא שהבנתי נושאים קריטיים אלו לפני שאני ממשיך הלאה.
+7.  **המלצות למשאבי למידה:** עבור הנושאים המרכזיים בכל שלב, הצע 2-3 משאבי למידה מומלצים ואיכותיים (מאמרים, קורסים אונליין, ספרים, ערוצי יוטיוב, וכו') המתאימים לרמת הלומד בשלב זה.
+
+הצג את התשובה בצורה מאורגנת וברורה, מחולקת לפי 7 הסעיפים שביקשתי.</pre>
+                        </div>
+                    </article>
+
+                    <!-- Article 5: Exercises -->
+                    <article id="l1-exercises" class="mb-12 pt-5 pb-8 border-b border-primary/20">
+                        <h2 class="text-2xl font-bold text-primary mb-6 flex items-center">
+                            <i class="fas fa-pencil-alt ml-3"></i>
+                            5. תרגילים פרקטיים (לביצוע עצמי)
+                        </h2>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div class="bg-surface p-6 rounded-lg shadow-md border border-primary/30">
+                                <h4 class="font-bold text-lg text-primary mb-3">תרגיל 1: השוואת סגנונות AI</h4>
+                                <ol class="list-decimal pr-6 mb-0 space-y-2">
+                                    <li>קחו פרומפט פשוט (למשל, "הסבר את המושג X בשלוש פסקאות").</li>
+                                    <li>הריצו אותו ב-ChatGPT, Claude ו-Gemini.</li>
+                                    <li>השוו סגנון, פירוט, בהירות ו"אישיות". <strong class="text-accent-yellow">מטרה:</strong> להבין איזה כלי מתאים לכם למשימות שונות.</li>
+                                </ol>
+                            </div>
+
+                            <div class="bg-surface p-6 rounded-lg shadow-md border border-primary/30">
+                                <h4 class="font-bold text-lg text-primary mb-3">תרגיל 2: מיפוי תחום עניין</h4>
+                                <ol class="list-decimal pr-6 mb-0 space-y-2">
+                                    <li>בחרו תחום שמעניין אתכם ולא מכירים לעומק.</li>
+                                    <li>בצעו את "אלגוריתם 2: מיפוי מהיר" בעזרת AI.</li>
+                                    <li>ארגנו את המידע. <strong class="text-accent-yellow">מטרה:</strong> לחוות קבלת תמונה רחבה על תחום חדש במהירות.</li>
+                                </ol>
+                            </div>
+
+                            <div class="bg-surface p-6 rounded-lg shadow-md border border-primary/30">
+                                <h4 class="font-bold text-lg text-primary mb-3">תרגיל 3: ניסוח פרומפט CoT</h4>
+                                <ol class="list-decimal pr-6 mb-0 space-y-2">
+                                    <li>חשבו על שאלה/בעיה מורכבת בתחום שבחרתם.</li>
+                                    <li>נסחו פרומפט המשתמש ב-Chain-of-Thought (בקשו חשיבה צעד-אחר-צעד).</li>
+                                    <li>הריצו במודל עם יכולות Reasoning. <strong class="text-accent-yellow">מטרה:</strong> לתרגל הנחיית AI לחשיבה אנליטית.</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Article 6: Looking Forward -->
+                    <article id="l1-next" class="mb-12 pt-5 pb-8">
+                        <h2 class="text-2xl font-bold text-primary mb-6 flex items-center">
+                            <i class="fas fa-forward ml-3"></i>
+                            6. מבט קדימה (מפגש 2)
+                        </h2>
+                        <p class="text-lg mb-4">במפגש הבא נתמקד בכלים וטכניקות מתקדמים לאיסוף מידע ואימות מקורות, כולל:</p>
+                        
+                        <div class="bg-surface p-6 rounded-lg shadow-md">
+                            <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <li class="flex items-start">
+                                    <i class="fas fa-search-plus mt-1 ml-3 text-primary"></i>
+                                    <div>
+                                        <strong class="text-accent-yellow">Perplexity.ai:</strong> 
+                                        <span>מנוע חיפוש מבוסס AI עם ציטוטים.</span>
+                                    </div>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-microscope mt-1 ml-3 text-primary"></i>
+                                    <div>
+                                        <strong class="text-accent-yellow">Elicit:</strong> 
+                                        <span>כלי למחקר אקדמי.</span>
+                                    </div>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-book mt-1 ml-3 text-primary"></i>
+                                    <div>
+                                        <strong class="text-accent-yellow">NotebookLM:</strong> 
+                                        <span>סביבת עבודה אישית לניתוח וסיכום מסמכים.</span>
+                                    </div>
+                                </li>
+                                <li class="flex items-start">
+                                    <i class="fas fa-balance-scale mt-1 ml-3 text-primary"></i>
+                                    <div>
+                                        <strong class="text-accent-yellow">אימות מידע:</strong> 
+                                        <span>שיטות להצלבת מקורות ואימות מידע.</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </article>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Handle internal section navigation
+            document.querySelectorAll('a[href^="#"]').forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+                    
+                    if (targetElement) {
+                        // Update active navigation item (handled by Intersection Observer)
+                        
+                        // Scroll to the element
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+            
+            // Copy Prompt Button
+            const copyBtn = document.getElementById('copyPromptBtn');
+            if (copyBtn) {
+                copyBtn.addEventListener('click', function() {
+                    const promptText = document.querySelector('pre').innerText;
+                    navigator.clipboard.writeText(promptText).then(() => {
+                        const originalText = copyBtn.innerHTML;
+                        copyBtn.innerHTML = '<i class="fas fa-check ml-2"></i> הועתק!';
+                        copyBtn.classList.add('bg-accent-green');
+                        
+                        setTimeout(() => {
+                            copyBtn.innerHTML = originalText;
+                            copyBtn.classList.remove('bg-accent-green');
+                        }, 2000);
+                    });
+                });
+            }
+            
+            // Scroll spy - update navigation based on scroll position
+            const sections = document.querySelectorAll('article[id]');
+            const navLinks = document.querySelectorAll('aside a[href^="#"]');
+            
+            // Function to update active navigation based on current section
+            function setActiveNavItem(sectionId) {
+                // Clear all active links
+                navLinks.forEach(navLink => {
+                    navLink.classList.remove('bg-primary', 'text-white');
+                    navLink.classList.add('text-[#9CA3AF]', 'hover:text-[#E5E7EB]', 'hover:bg-primary/10');
+                });
+                
+                // Set active link for current section
+                const activeLink = document.querySelector(`aside a[href="#${sectionId}"]`);
+                if (activeLink) {
+                    activeLink.classList.remove('text-[#9CA3AF]', 'hover:text-[#E5E7EB]', 'hover:bg-primary/10');
+                    activeLink.classList.add('bg-primary', 'text-white');
+                }
+            }
+            
+            // Set up Intersection Observer for each section
+            const observerOptions = {
+                root: null, // viewport
+                rootMargin: '-100px 0px -70% 0px', // trigger when section is 100px from top and in the first 30% of viewport
+                threshold: 0
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        setActiveNavItem(entry.target.getAttribute('id'));
+                    }
+                });
+            }, observerOptions);
+            
+            // Observe all sections
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+            
+            // If there's a hash in the URL, scroll to that section
+            if (window.location.hash) {
+                const targetId = window.location.hash.substring(1);
+                const targetElement = document.getElementById(targetId);
+                
+                if (targetElement) {
+                    setTimeout(() => {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                        
+                        // Set active nav item
+                        setActiveNavItem(targetId);
+                    }, 300);
+                }
+            } else {
+                // If no hash, set first section as active
+                const firstSection = sections[0];
+                if (firstSection) {
+                    setActiveNavItem(firstSection.getAttribute('id'));
+                }
+            }
+        });
+    </script>
+</body>
+</html>
