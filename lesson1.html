@@ -54,18 +54,23 @@
 <body class="bg-background text-[#E5E7EB] min-h-screen flex flex-col">
     <!-- App Bar -->
     <header class="bg-surface shadow-md py-3 px-6 flex justify-between items-center sticky top-0 z-50 border-b border-primary/20">
-        <div class="flex items-center space-x-4 space-x-reverse">
-            <a href="index.html" class="text-xl font-bold text-primary">מתוכן לתוכנה</a>
+        <!-- Logo and business name on right side -->
+        <div class="flex items-center">
+            <div class="h-10 w-10 rounded-full overflow-hidden ml-3">
+                <img src="./images/logo.png" alt="Logo" class="w-full h-full object-cover">
+            </div>
+            <div class="text-xl font-bold text-primary">מתוכן לתוכנה</div>
         </div>
         
-        <!-- Logo placeholder - center -->
-        <a href="index.html" class="h-10 w-10 rounded-full bg-primary flex items-center justify-center">
-            <span class="text-white font-bold">מל</span>
+        <!-- Back to home button in center -->
+        <a href="index.html" class="bg-primary/10 hover:bg-primary/20 text-primary px-4 py-2 rounded-md transition flex items-center">
+            <i class="fas fa-home ml-2"></i>
+            חזרה לעמוד הראשי
         </a>
         
-        <!-- Course title -->
+        <!-- Course title on left side -->
         <div class="text-lg font-semibold text-[#E5E7EB]">
-            <a href="index.html">איך להיות מומחה בכל תחום</a>
+            איך להיות מומחה בכל תחום
         </div>
     </header>
 
