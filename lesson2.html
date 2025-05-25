@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>שיעור 2: איסוף מידע מתקדם ואימות | איך להיות מומחה בכל תחום</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#8B5CF6',
+                        'primary-dark': '#7C3AED',
+                        background: '#111827',
+                        surface: '#1F2937',
+                        'text-light': '#E5E7EB',
+                        'text-muted': '#9CA3AF',
+                        'accent-yellow': '#FBBF24',
+                        'accent-red': '#F87171',
+                        'accent-green': '#34D399',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Custom scrollbar styles */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #111827;
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: #7C3AED;
+            border-radius: 10px;
+            border: 2px solid #111827;
+        }
+        /* Firefox scrollbar */
+        html {
+            scrollbar-width: thin;
+            scrollbar-color: #7C3AED #111827;
+        }
+        pre {
+            direction: ltr; /* Keep LTR for code blocks */
+            text-align: left; /* Keep LTR for code blocks */
+            background-color: #2d3748; 
+            color: #E5E7EB;
+            padding: 1em;
+            border-radius: 0.5em;
+            overflow-x: auto;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.9em;
+            margin-top: 0.5em;
+            margin-bottom: 1em;
+        }
+        .hebrew-prompt pre {
+            direction: rtl; /* RTL for Hebrew prompt text */
+            text-align: right; /* RTL for Hebrew prompt text */
+        }
+        .lecture-point { margin-bottom: 0.5rem; }
+        .lecture-sub-point { margin-right: 1.5rem; margin-bottom: 0.25rem; }
+        .prompt-box {
+            background-color: #2a3a59; 
+            border-left: 4px solid #FBBF24; 
+            padding: 1rem;
+            border-radius: 0.375rem; 
+            margin-top: 0.75rem;
+            margin-bottom: 1rem;
+        }
+        .prompt-box pre {
+            background-color: #1f2937; 
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+<body class="bg-background text-[#E5E7EB] min-h-screen flex flex-col">
+    <!-- App Bar -->
+    <header class="bg-surface shadow-md py-3 px-6 flex justify-between items-center sticky top-0 z-50 border-b border-primary/20">
+        <div class="flex items-center">
+            <div class="h-10 w-10 rounded-full overflow-hidden ml-3">
+                <img src="./images/logo.png" alt="Logo" class="w-full h-full object-cover">
+            </div>
+            <div class="text-xl font-bold text-primary">מתוכן לתוכנה</div>
+        </div>
+        <a href="index.html" class="bg-primary/10 hover:bg-primary/20 text-primary px-4 py-2 rounded-md transition flex items-center">
+            <i class="fas fa-home ml-2"></i>
+            חזרה לעמוד הראשי
+        </a>
+        <div class="text-lg font-semibold text-[#E5E7EB]">
+            איך להיות מומחה בכל תחום
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <div class="flex flex-1 overflow-hidden">
+        <!-- Sidebar -->
+        <aside class="w-72 bg-surface p-5 h-[calc(100vh-3.5rem)] fixed top-[3.5rem] right-0 overflow-y-auto border-l border-primary/20">
+            <h1 class="text-xl font-bold text-primary mb-6 pb-3 border-b border-primary/30 text-center">המדריך הפרקטי ל-AI</h1>
+            <nav>
+                <ul id="main-nav">
+                    <li class="mb-2">
+                        <a href="lesson1.html" data-lesson="lesson1" class="nav-link text-[#9CA3AF] hover:text-[#E5E7EB] hover:bg-primary/10 block py-2 px-4 rounded-md font-medium">
+                            שיעור 1: יסודות ואסטרטגיה
+                        </a>
+                         <ul class="mt-2 mr-4 pr-3 border-r-2 border-primary/30" id="lesson1-subnav">
+                            <!-- Sub-items for Lesson 1 would go here if needed -->
+                        </ul>
+                    </li>
+                    <li class="mb-2 mt-6">
+                        <a href="lesson2.html" data-lesson="lesson2" class="nav-link bg-primary text-white block py-2 px-4 rounded-md font-medium">
+                            שיעור 2: איסוף מידע ואימות
+                        </a>
+                        <ul class="mt-2 mr-4 pr-3 border-r-2 border-primary/30" id="lesson2-subnav">
+                            <li class="mb-1">
+                                <a href="#l2-intro" class="text-[#9CA3AF] hover:text-[#E5E7EB] hover:bg-primary/10 block py-2 px-3 rounded-md transition">
+                                    1. מבוא ומה נלמד
+                                </a>
+                            </li>
+                            <li class="mb-1">
+                                <a href="#l2-critical-thinking" class="text-[#9CA3AF] hover:text-[#E5E7EB] hover:bg-primary/10 block py-2 px-3 rounded-md transition">
+                                    2. חשיבה ביקורתית עם AI
+                                </a>
+                            </li>
+                            <li class="mb-1">
+                                <a href="#l2-search-overview" class="text-[#9CA3AF] hover:text-[#E5E7EB] hover:bg-primary/10 block py-2 px-3 rounded-md transition">
+                                    3. סוגי חיפוש AI
+                                </a>
+                            </li>
+                             <li class="mb-1">
+                                <a href="#l2-prompting-search" class="text-[#9CA3AF] hover:text-[#E5E7EB] hover:bg-primary/10 block py-2 px-3 rounded-md transition">
+                                    4. פרומפטים לחיפוש
+                                </a>
+                            </li>
+                            <li class="mb-1">
+                                <a href="#l2-basic-search-tools" class="text-[#9CA3AF] hover:text-[#E5E7EB] hover:bg-primary/10 block py-2 px-3 rounded-md transition">
+                                    5. חיפוש בסיסי וכלים
+                                </a>
+                            </li>
+                            <li class="mb-1">
+                                <a href="#l2-academic-search-tools" class="text-[#9CA3AF] hover:text-[#E5E7EB] hover:bg-primary/10 block py-2 px-3 rounded-md transition">
+                                    6. חיפוש אקדמי וכלים
+                                </a>
+                            </li>
+                            <li class="mb-1">
+                                <a href="#l2-deep-research-methods" class="text-[#9CA3AF] hover:text-[#E5E7EB] hover:bg-primary/10 block py-2 px-3 rounded-md transition">
+                                    7. מחקר עומק: שיטות וכלים
+                                </a>
+                            </li>
+                            <li class="mb-1">
+                                <a href="#l2-info-organization-learning" class="text-[#9CA3AF] hover:text-[#E5E7EB] hover:bg-primary/10 block py-2 px-3 rounded-md transition">
+                                    8. ארגון מידע ולמידה פעילה
+                                </a>
+                            </li>
+                             <li class="mb-1">
+                                <a href="#l2-validation" class="text-[#9CA3AF] hover:text-[#E5E7EB] hover:bg-primary/10 block py-2 px-3 rounded-md transition">
+                                    9. טכניקה: אימות מידע
+                                </a>
+                            </li>
+                            <li class="mb-1">
+                                <a href="#l2-digital-marketing-task" class="text-[#9CA3AF] hover:text-[#E5E7EB] hover:bg-primary/10 block py-2 px-3 rounded-md transition">
+                                    10. דוגמת פרומפט למחקר עומק
+                                </a>
+                            </li>
+                             <li class="mb-1">
+                                <a href="#l2-exercises" class="text-[#9CA3AF] hover:text-[#E5E7EB] hover:bg-primary/10 block py-2 px-3 rounded-md transition">
+                                    11. תרגילים
+                                </a>
+                            </li>
+                            <li class="mb-1">
+                                <a href="#l2-next" class="text-[#9CA3AF] hover:text-[#E5E7EB] hover:bg-primary/10 block py-2 px-3 rounded-md transition">
+                                    12. מבט קדימה
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="mb-2 mt-6">
+                        <a href="#" class="text-[#9CA3AF] italic block py-2 px-4 rounded-md font-medium opacity-70 cursor-not-allowed">
+                            שיעור 3 (בקרוב)
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Content Area -->
+        <main class="flex-1 p-8 mr-72 overflow-y-auto">
+            <div class="max-w-4xl mx-auto">
+                <!-- Lesson 2 Content -->
+                <section id="lesson2">
+                    <!-- Article 1: Introduction to Lesson 2 -->
+                    <article id="l2-intro" class="mb-12 pt-5 pb-8 border-b border-primary/20">
+                        <h2 class="text-2xl font-bold text-primary mb-4 flex items-center">
+                            <i class="fas fa-rocket ml-3"></i>
+                            1. מבוא: כלים מתקדמים לאיסוף, מחקר ואימות
+                        </h2>
+                        <p class="text-lg mb-4">בשיעור זה נעמיק בכלים וטכניקות מתקדמים לאיסוף מידע איכותי, שימוש יעיל ב-AI, ארגון מידע, ואימותו. נתמקד בהפיכת תהליך הלמידה למדויק ומבוסס.</p>
+                        
+                        <div class="bg-primary/10 p-3 rounded-lg border border-primary/30 mb-4">
+                            <p class="font-semibold text-primary"><i class="fas fa-bullseye ml-2"></i>מה נלמד היום (בקצרה):</p>
+                            <ul class="list-disc pr-5 mt-1 space-y-1 text-sm">
+                                <li>שימוש בכלי AI לחיפוש (בסיסי, אקדמי, מעמיק) ופרומפטים.</li>
+                                <li>הכרת כלים כמו Perplexity, Elicit, NotebookLM.</li>
+                                <li>חשיבה ביקורתית, אימות מידע, וארגון.</li>
+                                <li>למידה אקטיבית ודוגמת פרומפט למחקר עומק.</li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-surface p-3 rounded-lg border border-primary/30">
+                            <p class="font-semibold text-primary"><i class="fas fa-lightbulb ml-2"></i>מטרות השיעור:</p>
+                            <ul class="list-disc pr-5 mt-1 space-y-1 text-sm">
+                                <li>הכרת כלי AI מתקדמים למחקר (Perplexity, Elicit).</li>
+                                <li>שימוש ב-NotebookLM ודומיו לארגון וניתוח.</li>
+                                <li>הבנת עקרונות אימות מידע מ-AI.</li>
+                                <li>פיתוח מיומנויות למידה אקטיבית ויישום במשימת מחקר.</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <!-- Article: Critical Thinking with AI -->
+                    <article id="l2-critical-thinking" class="mb-12 pt-5 pb-8 border-b border-primary/20">
+                        <h2 class="text-2xl font-bold text-primary mb-4 flex items-center">
+                            <i class="fas fa-brain ml-3"></i>
+                            2. חשיבה ביקורתית עם AI
+                        </h2>
+                        <p class="text-lg mb-3">חשיבה ביקורתית חיונית בעבודה עם GenAI. AI הוא כלי עזר, לא תחליף לשיקול דעת.</p>
+                        <div class="bg-surface p-4 rounded-lg shadow-sm border-r-4 border-accent-yellow mb-3">
+                            <h4 class="font-bold text-lg mb-2 text-accent-yellow">עקרונות מנחים:</h4>
+                            <ul class="list-disc pr-4 space-y-1 text-sm text-text-light">
+                                <li><strong>אל תסמכו עיוורת:</strong> AI עלול להפחית חשיבה ביקורתית.</li>
+                                <li><strong>נהלו אתם את התהליך:</strong> שמרו על שליטה.</li>
+                                <li><strong>שאלו ואמתו:</strong> כל טענה דורשת גיבוי ממקור מהימן.</li>
+                                <li><strong>התמקדו באימות ואינטגרציה:</strong> השתמשו ב-AI לאיסוף ראשוני.</li>
+                                <li><strong>היזהרו מהזיות (Hallucinations):</strong> AI עלול "להמציא" מידע.</li>
+                            </ul>
+                        </div>
+                        <p class="text-lg">ראו ב-AI שותף הדורש הנחיה, פיקוח ובקרה אנושית.</p>
+                    </article>
+
+                    <!-- Article: AI Search Overview -->
+                    <article id="l2-search-overview" class="mb-12 pt-5 pb-8 border-b border-primary/20">
+                        <h2 class="text-2xl font-bold text-primary mb-4 flex items-center">
+                            <i class="fas fa-stream ml-3"></i>
+                            3. סקירה: סוגי חיפוש מידע ב-AI
+                        </h2>
+                        <p class="text-lg mb-4">גישות חיפוש שונות וסוג המודל משפיעים על התוצאות. נחלק ל-3 קטגוריות:</p>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                            <div class="bg-surface p-3 rounded-lg shadow-sm border border-primary/20 text-center">
+                                <div class="text-3xl mb-2"><i class="fas fa-bolt text-accent-yellow"></i></div>
+                                <h4 class="text-lg font-semibold text-primary mb-1">1. חיפוש בסיסי</h4>
+                                <p class="text-text-muted text-sm">סקירה מהירה, תשובות מסוכמות.</p>
+                            </div>
+                            <div class="bg-surface p-3 rounded-lg shadow-sm border border-primary/20 text-center">
+                                <div class="text-3xl mb-2"><i class="fas fa-flask text-accent-green"></i></div>
+                                <h4 class="text-lg font-semibold text-primary mb-1">2. חיפוש אקדמי</h4>
+                                <p class="text-text-muted text-sm">ממוקד מאמרים מדעיים.</p>
+                            </div>
+                            <div class="bg-surface p-3 rounded-lg shadow-sm border border-primary/20 text-center">
+                                <div class="text-3xl mb-2"><i class="fas fa-microscope text-accent-red"></i></div>
+                                <h4 class="text-lg font-semibold text-primary mb-1">3. חיפוש מעמיק</h4>
+                                <p class="text-text-muted text-sm">ריבוי מקורות, ניתוח השוואתי.</p>
+                            </div>
+                        </div>
+
+                        <h3 class="text-lg font-bold text-text-light mt-4 mb-2">השפעת סוג המודל:</h3>
+                        <ul class="list-disc pr-5 space-y-1 text-sm text-text-light">
+                            <li><strong>מודל שפה רגיל (Standard LLM):</strong> תשובות כלליות, סקירה ראשונית.</li>
+                            <li><strong>מודל חשיבה/סוכן (Reasoning/Agent Model):</strong> ניתוח מעמיק, השוואה, הסקת מסקנות.</li>
+                            <li><strong>מודלים מתקדמים לחיפוש רב-שלבי:</strong> חיפוש איטרטיבי, אימות תוך כדי, בניית טיעון.</li>
+                        </ul>
+                    </article>
+
+                    <!-- Article: Prompting for Search -->
+                    <article id="l2-prompting-search" class="mb-12 pt-5 pb-8 border-b border-primary/20">
+                        <h2 class="text-2xl font-bold text-primary mb-4 flex items-center">
+                            <i class="fas fa-pencil-ruler ml-3"></i>
+                            4. פרומפטים אפקטיביים לחיפוש
+                        </h2>
+                        <p class="text-lg mb-4">ניסוח פרומפטים מדויק חיוני לקבלת מידע רלוונטי ממודלי חיפוש.</p>
+
+                        <div class="space-y-6">
+                            <div class="bg-surface p-4 rounded-lg shadow-sm border-r-4 border-pink-500">
+                                <h3 class="text-lg font-bold text-pink-400 mb-2 flex items-center"><i class="fas fa-newspaper ml-2"></i>פרומפטים לחדשות</h3>
+                                <p class="text-text-muted text-sm mb-2"><strong>מטרה:</strong> חדשות עדכניות ורלוונטיות.</p>
+                                <ul class="list-disc pr-4 space-y-1 text-xs text-text-light">
+                                    <li><strong>מסגרת זמן:</strong> "התפתחויות אחרונות ב-[נושא] ב-24 שעות."</li>
+                                    <li><strong>מקורות ספציפיים (אם תומך):</strong> "סכם כתבות מ[אתר X] ו-[אתר Y] על [נושא]."</li>
+                                    <li><strong>נקודות מבט:</strong> "עמדות שונות בתקשורת על [אירוע]."</li>
+                                </ul>
+                                <div class="prompt-box hebrew-prompt">
+                                    <p class="text-sm font-semibold text-accent-yellow">דוגמת פרומפט לחדשות:</p>
+                                    <pre><code>סכם את ההתפתחויות המרכזיות ברגולציה על בינה מלאכותית שנדונו בכלי תקשורת טכנולוגיים מרכזיים במהלך 48 השעות האחרונות. התמקד בפרספקטיבות מהאיחוד האירופי ומארה"ב.</code></pre>
+                                </div>
+                            </div>
+
+                            <div class="bg-surface p-4 rounded-lg shadow-sm border-r-4 border-green-500">
+                                <h3 class="text-lg font-bold text-green-400 mb-2 flex items-center"><i class="fas fa-file-alt ml-2"></i>פרומפטים למאמרים</h3>
+                                <p class="text-text-muted text-sm mb-2"><strong>מטרה:</strong> מאמרים מעוררי מחשבה, ניתוחים, תוכן הסברי.</p>
+                                <ul class="list-disc pr-4 space-y-1 text-xs text-text-light">
+                                    <li><strong>סוג ועומק:</strong> "מצא מאמרי מבוא על [נושא] לקהל לא טכני."</li>
+                                    <li><strong>טון/סגנון:</strong> "חפש מאמרים עם נקודת מבט ביקורתית על [תופעה]."</li>
+                                    <li><strong>סיכומים:</strong> "סכם טיעונים מרכזיים במאמרים על [נושא]."</li>
+                                </ul>
+                                <div class="prompt-box hebrew-prompt">
+                                    <p class="text-sm font-semibold text-accent-yellow">דוגמת פרומפט למאמרים:</p>
+                                    <pre><code>מצא מאמרי מבוא המסבירים את המושג 'טכנולוגיית בלוקצ'יין' לקהל לא טכני. ספק סיכום קצר של כל מאמר.</code></pre>
+                                </div>
+                            </div>
+
+                            <div class="bg-surface p-4 rounded-lg shadow-sm border-r-4 border-blue-500">
+                                <h3 class="text-lg font-bold text-blue-400 mb-2 flex items-center"><i class="fas fa-graduation-cap ml-2"></i>פרומפטים למחקר אקדמי</h3>
+                                <p class="text-text-muted text-sm mb-2"><strong>מטרה:</strong> מאמרים אקדמיים, מחקרים, סקירות ספרות.</p>
+                                <ul class="list-disc pr-4 space-y-1 text-xs text-text-light">
+                                    <li><strong>מילות מפתח אקדמיות:</strong> "מצא סקירת ספרות עדכנית על [נושא אקדמי]."</li>
+                                    <li><strong>תחומי לימוד:</strong> "מאמרים בתחום [פסיכולוגיה התפתחותית] על [נושא]."</li>
+                                    <li><strong>נתונים ספציפיים:</strong> "ממצאים סטטיסטיים במחקר עדכני על [תרופה/טיפול]."</li>
+                                </ul>
+                                <div class="prompt-box hebrew-prompt">
+                                    <p class="text-sm font-semibold text-accent-yellow">דוגמת פרומפט למחקר אקדמי:</p>
+                                    <pre><code>מצא סקירות ספרות עדכניות (ב-5 השנים האחרונות) שעברו ביקורת עמיתים, בנושא היתרונות הקוגניטיביים של דו-לשוניות בגיל הרך.</code></pre>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Article: Basic Search Tools -->
+                    <article id="l2-basic-search-tools" class="mb-12 pt-5 pb-8 border-b border-primary/20">
+                        <h2 class="text-2xl font-bold text-primary mb-4 flex items-center">
+                            <i class="fas fa-search ml-3"></i>
+                            5. חיפוש בסיסי וכלים
+                        </h2>
+                        <p class="text-lg mb-3">לסקירה מהירה, הבנת מושגים, ותשובות מסוכמות עם מקורות. בדקו תמיד מקורות.</p>
+                        
+                        <div class="bg-surface p-4 rounded-lg shadow-sm border-r-4 border-primary-dark mb-4">
+                            <h3 class="font-bold text-lg mb-1 flex items-center"><i class="fas fa-brain ml-2 text-primary"></i>כלי מרכזי: Perplexity.ai</h3>
+                            <p class="text-sm mb-2"><strong class="text-accent-yellow">מה זה:</strong> מנוע תשובות AI עם דגש על מקורות. מסכם עם הפניות.</p>
+                            <p class="text-sm mb-2"><strong class="text-accent-yellow">חוזקות:</strong> תשובות ישירות, ציון מקורות, שאלות המשך, מצב "Focus".</p>
+                            <p class="text-sm"><strong class="text-accent-yellow">מתי להשתמש:</strong> סקירה מהירה, כשיש צורך במקורות, מידע עדכני, סיעור מוחות.</p>
+                        </div>
+                        <div class="prompt-box hebrew-prompt">
+                             <p class="text-sm font-semibold text-accent-yellow">דוגמת פרומפט לחיפוש בסיסי (ל-Perplexity):</p>
+                             <pre><code>מהם היתרונות והחסרונות המרכזיים של שימוש במקורות אנרגיה מתחדשת כמו אנרגיה סולארית ואנרגיית רוח לבתים פרטיים? ספק מקורות.</code></pre>
+                        </div>
+                        
+                        <h3 class="text-lg font-semibold text-text-light mt-4 mb-2">כלים נוספים לחיפוש בסיסי:</h3>
+                        <ul class="list-disc pr-4 space-y-1 text-sm">
+                            <li><strong>Gemini (Google):</strong> חלון הקשר רחב, חיפוש וניתוח.</li>
+                            <li><strong>ChatGPT (OpenAI):</strong> תכנון חיפוש, שאילתות, בירור מהיר (בגרסאות עם חיבור לאינטרנט).</li>
+                            <li><strong>Claude (Anthropic):</strong> חיפוש ישיר באינטרנט וניתוח מתקדם (בגרסאות עדכניות).</li>
+                        </ul>
+                    </article>
+
+                    <!-- Article: Academic Search Tools -->
+                    <article id="l2-academic-search-tools" class="mb-12 pt-5 pb-8 border-b border-primary/20">
+                        <h2 class="text-2xl font-bold text-primary mb-4 flex items-center">
+                            <i class="fas fa-book-open ml-3"></i>
+                            6. חיפוש אקדמי וכלים
+                        </h2>
+                        <p class="text-lg mb-3">לביסוס מחקר על מאמרים מדעיים. כלים אלו מחפשים במאגרים אקדמיים.</p>
+
+                        <div class="bg-surface p-4 rounded-lg shadow-sm border-r-4 border-primary-dark mb-4">
+                            <h3 class="font-bold text-lg mb-1 flex items-center"><i class="fas fa-flask ml-2 text-primary"></i>כלי מרכזי: Elicit</h3>
+                             <p class="text-sm mb-2"><strong class="text-accent-yellow">מה זה:</strong> עוזר מחקר AI לספרות אקדמית (מעל 126 מיליון מאמרים).</p>
+                            <p class="text-sm mb-2"><strong class="text-accent-yellow">חוזקות:</strong> מוצא מאמרים לשאלת מחקר, מסכם ממצאים בטבלה, מאפשר סינון.</p>
+                            <p class="text-sm"><strong class="text-accent-yellow">מתי להשתמש:</strong> סקירת ספרות, מציאת מאמרים תומכים/סותרים, זיהוי פערי מחקר.</p>
+                        </div>
+                         <div class="prompt-box hebrew-prompt">
+                             <p class="text-sm font-semibold text-accent-yellow">דוגמת פרומפט לחיפוש אקדמי (ל-Elicit):</p>
+                             <pre><code>מהן ההתערבויות היעילות ביותר להפחתת חרדת מתמטיקה בקרב תלמידי חטיבת ביניים, על פי מחקרים עדכניים?</code></pre>
+                        </div>
+
+                        <h3 class="text-lg font-semibold text-text-light mt-4 mb-2">כלים נוספים לחיפוש אקדמי:</h3>
+                         <ul class="list-disc pr-4 space-y-1 text-sm">
+                            <li><strong>Semantic Scholar:</strong> מנוע חיפוש אקדמי AI, מידע על השפעת מאמרים.</li>
+                            <li><strong>Connected Papers:</strong> רשת ויזואלית של מאמרים קשורים.</li>
+                            <li><strong>Inciteful:</strong> בונה רשת מאמרים על בסיס ציטוטים.</li>
+                        </ul>
+                    </article>
+                    
+                    <!-- Article: Deep Research Methods & Tools -->
+                    <article id="l2-deep-research-methods" class="mb-12 pt-5 pb-8 border-b border-primary/20">
+                        <h2 class="text-2xl font-bold text-primary mb-4 flex items-center">
+                            <i class="fas fa-cogs ml-3"></i>
+                            7. מחקר עומק: שיטות וכלים
+                        </h2>
+                        <p class="text-lg mb-3">תהליך מקיף המשלב מקורות מרובים, ניתוח השוואתי וסינתזה מעמיקה.</p>
+
+                        <h3 class="text-lg font-bold text-text-light mt-3 mb-2">הנדסת פרומפטים ופרסונה למחקר עומק:</h3>
+                        <ul class="list-disc pr-4 space-y-1 text-sm text-text-light mb-3">
+                            <li><strong>הנדסת פרומפטים מתקדמת:</strong> שאלה חדה, דרישות עומק, קהל יעד, ציטוטים.</li>
+                            <li><strong>שרשור מחשבה (CoT):</strong> הנחיית AI "לחשוב צעד-אחר-צעד", כולל ביקורת עצמית.</li>
+                            <li><strong>הגדרת פרסונה ל-AI:</strong> "אתה אנליסט מדיניות..." ליישור סגנון וגישה.</li>
+                            <li><strong>איטרציות ושיפור:</strong> הערכת תשובה והתאמת פרומפט.</li>
+                        </ul>
+                        
+                        <div class="prompt-box hebrew-prompt">
+                             <p class="text-sm font-semibold text-accent-yellow">דוגמת פרומפט לתכנון מחקר עומק:</p>
+                             <pre><code>אני צריך לבצע מחקר עומק על ההשלכות האתיות של בינה מלאכותית יוצרת בתעשיות הקריאייטיב. 
+קהל היעד שלי הוא קובעי מדיניות. 
+עזור לי:
+1. לפרק את הנושא ל-3-4 תתי-נושאים מרכזיים.
+2. עבור כל תת-נושא, לנסח 2-3 שאלות מחקר ספציפיות.
+3. להציע סוגי מקורות (למשל, מאמרים אקדמיים, דוחות תעשייה, ניתוחים משפטיים, כתבות חדשותיות ממקורות אמינים) לכל תת-נושא.
+4. לשרטט מבנה אפשרי לדוח מקיף, כולל סעיפים כמו מבוא, ניתוח תתי-הנושאים (עם ראיות וציטוטים), מסגרות אתיות, המלצות מדיניות ומסקנות.
+ודא שכל המידע הנאסף מגובה במקורות אמינים וברי-ציטוט.
+</code></pre>
+                        </div>
+                        
+                        <h3 class="text-lg font-bold text-text-light mt-4 mb-2">כלים לביצוע Deep Research:</h3>
+                        <ul class="list-disc pr-4 space-y-1 text-sm">
+                            <li><strong>Perplexity Pro (מצב "Writing" או "Pro Search"):</strong> חיפוש איטרטיבי, קריאת מאות מקורות, דוח מקיף.</li>
+                             <li><strong>Gemini (Google) - גרסאות מתקדמות:</strong> ניתוח נושאים מורכבים, מסמכים רבים, סינתזה.</li>
+                             <li><strong>ChatGPT (OpenAI) - גרסאות מתקדמות:</strong> גיבוש תוכנית מחקר, ניתוח טקסטים, סיוע בכתיבה.</li>
+                        </ul>
+                    </article>
+
+                    <!-- Article: Information Organization & Active Learning -->
+                    <article id="l2-info-organization-learning" class="mb-12 pt-5 pb-8 border-b border-primary/20">
+                        <h2 class="text-2xl font-bold text-primary mb-4 flex items-center">
+                            <i class="fas fa-folder-open ml-3"></i>
+                            8. ארגון מידע ולמידה פעילה
+                        </h2>
+                        <p class="text-lg mb-3">ארגון יעיל קריטי לשליפת תובנות. נעודד מעבר מלמידה פסיבית לאקטיבית.</p>
+
+                        <h3 class="text-lg font-bold text-text-light mt-3 mb-2">כלי מרכזי: NotebookLM (Google)</h3>
+                        <div class="bg-surface p-3 rounded-lg shadow-sm border-r-4 border-primary-dark mb-3">
+                            <p class="text-sm mb-1"><strong class="text-accent-yellow">מה זה:</strong> מחברת מחקר AI העובדת עם המקורות האישיים שלכם.</p>
+                            <p class="text-sm mb-1"><strong class="text-accent-yellow">חוזקות:</strong> העלאת מקורות, יצירת סיכומים, שאלות נפוצות, סקירות אודיו, גילוי מקורות.</p>
+                            <p class="text-sm"><strong class="text-accent-yellow">מתי להשתמש:</strong> להבנת אוסף מסמכים, הכנת סיכומים, ניתוח חומרי גלם.</p>
+                        </div>
+                        
+                        <h3 class="text-lg font-semibold text-text-light mt-3 mb-2">כלים נוספים לארגון:</h3>
+                        <ul class="list-disc pr-4 space-y-1 text-sm">
+                            <li><strong>Notion (עם Notion AI):</strong> בסיסי ידע, סיכום, ניתוח, שאילתות AI על מסמכים.</li>
+                            <li><strong>Miro (עם Miro Assist):</strong> לוח ויזואלי, מפות חשיבה, סיכום פתקים.</li>
+                        </ul>
+
+                        <h3 class="text-lg font-bold text-text-light mt-4 mb-2">למידה אקטיבית וטכניקות מהירות (יישום עם כלים):</h3>
+                        <ul class="list-disc pr-4 space-y-1 text-sm">
+                            <li><strong>שיטת פיינמן:</strong> הסבירו מושגים בפשטות. <strong class="text-primary">יישום:</strong> הסבירו מושג ל-NotebookLM.</li>
+                            <li><strong>פירוק לחלקים (Chunking):</strong> פרקו מידע ליחידות קטנות. <strong class="text-primary">יישום:</strong> ארגנו ב-Miro.</li>
+                            <li><strong>רישום אקטיבי:</strong> ארגנו מידע עם שאלות ותובנות. <strong class="text-primary">יישום:</strong> השתמשו בתבנית ב-Notion.</li>
+                        </ul>
+                    </article>
+
+                    <!-- Article: Information Validation -->
+                    <article id="l2-validation" class="mb-12 pt-5 pb-8 border-b border-primary/20">
+                        <h2 class="text-2xl font-bold text-primary mb-4 flex items-center">
+                            <i class="fas fa-check-double ml-3"></i>
+                            9. טכניקה: אימות מידע
+                        </h2>
+                        <p class="text-lg mb-3">AI אינו חף מטעויות. אימות מידע הוא קריטי.</p>
+
+                        <div class="bg-surface p-3 rounded-lg shadow-sm border border-primary/20 mb-3">
+                            <h4 class="font-bold text-md mb-1 flex items-center"><i class="fas fa-question-circle ml-2 text-primary"></i>למה לאמת?</h4>
+                            <ul class="list-disc pr-4 space-y-1 text-xs">
+                                <li>הזיות, הטיות, מידע לא עדכני, פרשנות שגויה, סיכומי AI שגויים.</li>
+                            </ul>
+                        </div>
+                        
+                        <h3 class="text-lg font-bold text-text-light mt-3 mb-2">הערכת מקורות אינטרנטיים (לא-אקדמיים):</h3>
+                        <p class="text-sm text-text-muted mb-2">בדקו רקע כותב, גיבוי נתונים, השוו מקורות.</p>
+
+
+                        <h3 class="text-lg font-bold text-text-light mt-3 mb-2">אסטרטגיות אימות מידע:</h3>
+                        <ol class="list-decimal pr-4 space-y-2 text-sm">
+                            <li><strong>הצלבת מקורות (Triangulation):</strong> חפשו במספר מקורות בלתי תלויים.</li>
+                            <li><strong>בדיקת המקורות שסופקו:</strong> ודאו שהמקור אמין והמידע מופיע בו.</li>
+                            <li><strong>הערכה ביקורתית של המקור:</strong> מומחיות כותב? גיבוי בנתונים? אינטרסים? עדכניות?</li>
+                            <li><strong>היגיון בריא ומומחיות קיימת:</strong> האם המידע הגיוני? סותר ידע קודם?</li>
+                             <li><strong>שאלו את ה-AI "שאלות בדיקה":</strong> בדקו תשובות על מידע ידוע.</li>
+                        </ol>
+                        <div class="bg-red-900/10 border-r-4 border-accent-red p-3 rounded mt-3">
+                            <p class="text-sm"><strong class="text-accent-red"><i class="fas fa-exclamation-triangle ml-2"></i>חשוב:</strong> ככל שההחלטה חשובה יותר, השקיעו יותר באימות.</p>
+                        </div>
+                    </article>
+                    
+                    <!-- Article: Deep Research Prompt (User Provided) -->
+                    <article id="l2-digital-marketing-task" class="mb-12 pt-5 pb-8 border-b border-primary/20">
+                        <h2 class="text-2xl font-bold text-primary mb-4 flex items-center">
+                            <i class="fas fa-tasks ml-3"></i>
+                            10. דוגמת פרומפט למחקר עומק: יסודות השיווק הדיגיטלי
+                        </h2>
+                        <p class="text-lg mb-4">התיאור המפורט להלן של משימת המחקר בנושא "יסודות השיווק הדיגיטלי" מהווה דוגמה לפרומפט מקיף שניתן להגיש לכלי AI לצורך ביצוע מחקר עומק. שימו לב לפירוט הרב של נושא המחקר, המטרות, שאלות המחקר, התוצרים הרצויים והדגשים - כל אלו נועדו להנחות את ה-AI בצורה מיטבית. השתמשו במבנה זה כהשראה לבניית פרומפטים משלכם למשימות מחקר מורכבות.</p>
+
+                        <div class="bg-surface p-4 rounded-lg shadow-md border border-primary/20 mb-3 prompt-box hebrew-prompt">
+                            <h3 class="text-lg font-semibold text-accent-yellow mb-2">נושא המחקר:</h3>
+                            <pre><code>מבוא מקיף ליסודות השיווק הדיגיטלי: קהל יעד, פרסונות, משפך שיווקי ומדדי ביצוע (KPIs) – מדריך למתחילים</code></pre>
+                        </div>
+                    
+                        <div class="bg-surface p-4 rounded-lg shadow-md border border-primary/20 mb-3 prompt-box hebrew-prompt">
+                            <h3 class="text-lg font-semibold text-accent-yellow mb-2">מטרת המחקר:</h3>
+                            <pre><code>לספק הסבר יסודי, ברור ומובנה של מושגי הליבה בשיווק דיגיטלי, בדגש על קהל יעד, פרסונות, משפך שיווקי ומדדי ביצוע מרכזיים (KPIs). המחקר מיועד ללומדים בתחילת דרכם ונועד להניח תשתית להבנה מעמיקה יותר ולהתפתחות בתחום.</code></pre>
+                        </div>
+                    
+                        <div class="bg-surface p-4 rounded-lg shadow-md border border-primary/20 mb-3 prompt-box hebrew-prompt">
+                            <h3 class="text-lg font-semibold text-accent-yellow mb-2">שאלות מחקר מרכזיות (ללמידה מאפס):</h3>
+                            
+                            <h4 class="text-md font-semibold text-primary mt-3 mb-1">קהל יעד:</h4>
+                            <pre><code>מהו קהל יעד בשיווק דיגיטלי ומדוע הוא הצעד הראשון והחשוב ביותר בכל אסטרטגיה שיווקית?
+מהן הדרכים הבסיסיות והפשוטות ביותר להתחיל להגדיר ולזהות קהל יעד (למשל: שאלות מנחות, התבוננות בלקוחות קיימים, ניתוח מתחרים ברמה בסיסית)?
+מהם המונחים המרכזיים הקשורים לפילוח קהל (דמוגרפיה, פסיכוגרפיה, התנהגות, גיאוגרפיה) וכיצד הם עוזרים לנו?
+הסבר באמצעות דוגמאות פשוטות כיצד עסקים שונים (למשל, חנות בגדים מקומית, אפליקציה למדיטציה) יכולים להגדיר את קהל היעד שלהם.</code></pre>
+                    
+                            <h4 class="text-md font-semibold text-primary mt-3 mb-1">פרסונות:</h4>
+                            <pre><code>מהי פרסונה שיווקית ומה ההבדל בינה לבין קהל יעד כללי?
+מדוע יצירת פרסונות חשובה גם למתחילים וכיצד היא הופכת את השיווק לאישי ויעיל יותר?
+מהם המרכיבים הבסיסיים שחייבים להיות בכל פרסונה (שם, גיל, תפקיד, מטרות עיקריות, אתגרים עיקריים)?
+הצג תהליך פשוט, צעד אחר צעד, ליצירת פרסונה בסיסית ראשונה, כולל דוגמאות לשאלות שכדאי לשאול.</code></pre>
+                    
+                            <h4 class="text-md font-semibold text-primary mt-3 mb-1">משפך שיווקי (Marketing Funnel):</h4>
+                            <pre><code>מהו משפך שיווקי וכיצד הוא מתאר את מסע הלקוח הפוטנציאלי?
+הסבר את השלבים העיקריים במשפך שיווקי בסיסי (לדוגמה: מודעות, עניין/אינטראקציה, החלטה/המרה, נאמנות) בשפה פשוטה.
+אילו פעולות שיווק דיגיטלי בסיסיות מתאימות לכל שלב במשפך? (למשל: פוסטים ברשתות חברתיות למודעות, מאמר בלוג לעניין, דף נחיתה להמרה).
+תן דוגמה פשוטה למעבר של לקוח דרך משפך שיווקי של עסק קטן.</code></pre>
+                    
+                            <h4 class="text-md font-semibold text-primary mt-3 mb-1">מטרות ומדדי ביצוע מרכזיים (KPIs):</h4>
+                            <pre><code>מהן מטרות בשיווק דיגיטלי ומדוע חשוב להגדיר אותן לפני שמתחילים בפעילות כלשהי?
+מהם מדדי ביצוע מרכזיים (KPIs) וכיצד הם עוזרים לנו לדעת אם אנחנו מצליחים?
+אילו KPIs בסיסיים וקלים למדידה מתאימים למתחילים לכל שלב במשפך ולמטרות נפוצות (למשל: חשיפות, קליקים, אחוז המרה, מספר עוקבים)?
+הסבר את הקשר בין המטרות שהגדרנו לבין ה-KPIs שאנחנו בוחרים לעקוב אחריהם, באמצעות דוגמאות.</code></pre>
+                    
+                            <h4 class="text-md font-semibold text-primary mt-3 mb-1">הקשרים בין המושגים (ראייה כוללת למתחילים):</h4>
+                            <pre><code>כיצד הבנת קהל היעד עוזרת לנו ליצור פרסונות מדויקות יותר?
+כיצד הפרסונות מכווינות את סוג התוכן והמסרים שאנו יוצרים לכל שלב במשפך השיווקי?
+כיצד KPIs מאפשרים לנו למדוד את ההצלחה של הפעולות שלנו המכוונות לפרסונות השונות בכל שלב במשפך?
+כיצד ארבעת המרכיבים הללו משתלבים יחד ליצירת תוכנית שיווק דיגיטלי בסיסית אך אפקטיבית?</code></pre>
+                        </div>
+                    
+                        <div class="bg-surface p-4 rounded-lg shadow-md border border-primary/20 mb-3 prompt-box hebrew-prompt">
+                            <h3 class="text-lg font-semibold text-accent-yellow mb-2">תוצרים רצויים (ללמידה מאפס):</h3>
+                            <pre><code>הסברים ברורים, תמציתיים ובשפה נגישה לכל אחד מארבעת יסודות השיווק.
+מילון מונחים בסיסי לכל נושא.
+דוגמאות פשוטות ומעשיות הממחישות כל מושג ותהליך.
+תרשימים ויזואליים פשוטים (למשל, של משפך שיווקי בסיסי, מבנה פרסונה).
+צ'קליסטים או מדריכים "צעד-אחר-צעד" ליישום ראשוני של כל מרכיב (למשל, "איך להגדיר קהל יעד בפעם הראשונה", "איך לבנות פרסונה ראשונה").
+המלצות על מקורות מידע נוספים למתחילים (בלוגים, קורסים חינמיים בסיסיים, ספרים מומלצים למתחילים).</code></pre>
+                        </div>
+                        
+                        <div class="bg-surface p-4 rounded-lg shadow-md border border-primary/20 prompt-box hebrew-prompt">
+                            <h3 class="text-lg font-semibold text-accent-yellow mb-2">דגשים נוספים ללמידה:</h3>
+                            <pre><code>התמקדות ב**"למה"** מאחורי כל מושג, ולא רק ב"איך".
+פירוק מושגים מורכבים לחלקים קטנים וקלים לעיכול.
+הדגשת הקשרים והתלות ההדדית בין ארבעת היסודות.
+שמירה על גישה מעודדת ומניעה לפעולה עבור הלומד.</code></pre>
+                        </div>
+                    </article>
+
+                    <!-- Article: Exercises -->
+                    <article id="l2-exercises" class="mb-12 pt-5 pb-8 border-b border-primary/20">
+                        <h2 class="text-2xl font-bold text-primary mb-4 flex items-center">
+                            <i class="fas fa-pencil-alt ml-3"></i>
+                            11. תרגילים פרקטיים
+                        </h2>
+                        <p class="text-lg mb-3">תרגילים קצרים להתנסות בכלים ובטכניקות שלמדנו:</p>
+                        <div class="space-y-4">
+                            <div class="bg-surface p-3 rounded-lg shadow-sm border border-primary/30">
+                                <h4 class="font-bold text-md text-primary mb-1">תרגיל 1: חיפוש בסיסי (5 דקות)</h4>
+                                <p class="text-xs">בכלי חיפוש בסיסי, נסחו שאילתה על נושא המחקר. סרקו תשובה, רשמו ממצא ומקור. <strong class="text-accent-yellow">מטרה:</strong> תרגול סקירה ראשונית וביקורת מקורות.</p>
+                            </div>
+
+                            <div class="bg-surface p-3 rounded-lg shadow-sm border border-primary/30">
+                                <h4 class="font-bold text-md text-primary mb-1">תרגיל 2: חיפוש אקדמי (Elicit, 7-10 דקות)</h4>
+                                <p class="text-xs">ב-Elicit, נסחו שאילתה אקדמית. סקרו מאמרים ותקצירים. <strong class="text-accent-yellow">מטרה:</strong> התנסות בחיפוש אקדמי וניתוח ראשוני.</p>
+                            </div>
+
+                            <div class="bg-surface p-3 rounded-lg shadow-sm border border-primary/30">
+                                <h4 class="font-bold text-md text-primary mb-1">תרגיל 3: תכנון מחקר עומק (7-10 דקות)</h4>
+                                <p class="text-xs">נסחו שאלה מורכבת. פרקו ל-3 תתי-נושאים. (אופציונלי) כתבו הנחיה לכלי Deep Research. <strong class="text-accent-yellow">מטרה:</strong> תרגול תכנון מחקר עומק והנדסת פרומפטים.</p>
+                            </div>
+
+                            <div class="bg-surface p-3 rounded-lg shadow-sm border border-primary/30">
+                                <h4 class="font-bold text-md text-primary mb-1">תרגיל 4: למידה פעילה (NotebookLM)</h4>
+                                 <p class="text-xs">העלו מאמר ל-NotebookLM. בקשו ממנו לשאול אתכם שאלות, לסכם, או להסביר מושג. יישמו טכניקת למידה מהירה. <strong class="text-accent-yellow">מטרה:</strong> העמקת הבנה וזיהוי פערים.</p>
+                            </div>
+                             <div class="bg-surface p-3 rounded-lg shadow-sm border border-primary/30">
+                                <h4 class="font-bold text-md text-primary mb-1">תרגיל 5: אימות מידע</h4>
+                                <p class="text-xs">שאלו AI שאלה על עובדה/נתון. אמתו את התשובה באמצעות שתי אסטרטגיות. תעדו. <strong class="text-accent-yellow">מטרה:</strong> תרגול חשיבה ביקורתית ואימות.</p>
+                            </div>
+                        </div>
+                    </article>
+
+
+                    <!-- Article: Looking Forward -->
+                    <article id="l2-next" class="mb-12 pt-5 pb-8">
+                        <h2 class="text-2xl font-bold text-primary mb-4 flex items-center">
+                            <i class="fas fa-forward ml-3"></i>
+                            12. מבט קדימה (מפגש 3: ניתוח ויישום)
+                        </h2>
+                        <p class="text-lg mb-3">במפגש הבא: מאיסוף וארגון לניתוח ויישום. נהפוך מידע לתובנות ישימות.</p>
+                        
+                        <div class="bg-surface p-4 rounded-lg shadow-sm">
+                            <ul class="list-disc pr-5 space-y-1 text-sm text-text-light">
+                                <li><strong class="text-accent-yellow">ניתוח נתונים ידידותי:</strong> גם ללא רקע בתכנות.</li>
+                                <li><strong class="text-accent-yellow">תהליך ניתוח מובנה:</strong> מתיאור להמלצה.</li>
+                                <li><strong class="text-accent-yellow">AI לניתוח יעיל:</strong> פרשנות, זיהוי מגמות, דוחות.</li>
+                                 <li><strong class="text-accent-yellow">יצירת תוכן מתקדמת:</strong> מאמרים, פוסטים, תסריטים.</li>
+                                <li><strong class="text-accent-yellow">אוטומציה של תהליכי עבודה.</strong></li>
+                                <li><strong class="text-accent-yellow">פיתוח מומחיות:</strong> תרגול, משוב, זיהוי פערים.</li>
+                                <li><strong class="text-accent-yellow">קריאה לפעולה ופרויקט אישי.</strong></li>
+                            </ul>
+                        </div>
+                         <p class="text-lg mt-3">השיעור הבא יסכם את התהליך המלא של הפיכה למומחה בעזרת AI.</p>
+                    </article>
+                </section>
+            </div>
+        </main>
+    </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Handle internal section navigation
+        document.querySelectorAll('aside a[href^="#l2-"], aside a[href^="lesson2.html#l2-"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const fullHref = this.getAttribute('href');
+                const targetId = fullHref.includes('#') ? fullHref.substring(fullHref.indexOf('#') + 1) : null;
+                
+                if (targetId) {
+                    const targetElement = document.getElementById(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        history.pushState(null, null, '#' + targetId);
+                    }
+                }
+            });
+        });
+        
+        // Scroll spy
+        const sections = document.querySelectorAll('article[id^="l2-"]');
+        const navLinks = document.querySelectorAll('aside #lesson2-subnav a[href^="#l2-"]');
+        
+        function setActiveNavItem(sectionId) {
+            navLinks.forEach(navLink => {
+                navLink.classList.remove('bg-primary', 'text-white');
+                navLink.classList.add('text-[#9CA3AF]', 'hover:text-[#E5E7EB]', 'hover:bg-primary/10');
+            });
+            
+            const activeLink = document.querySelector(`aside #lesson2-subnav a[href="#${sectionId}"]`);
+            if (activeLink) {
+                activeLink.classList.remove('text-[#9CA3AF]', 'hover:text-[#E5E7EB]', 'hover:bg-primary/10');
+                activeLink.classList.add('bg-primary', 'text-white');
+            }
+        }
+        
+        const observerOptions = {
+            root: null, 
+            rootMargin: '-100px 0px -60% 0px',
+            threshold: 0
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            let latestIntersectingSection = null;
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                     if (!latestIntersectingSection || entry.intersectionRatio > latestIntersectingSection.intersectionRatio) {
+                        latestIntersectingSection = entry;
+                    }
+                }
+            });
+            if (latestIntersectingSection) {
+                 const visibleSectionId = latestIntersectingSection.target.getAttribute('id');
+                 setActiveNavItem(visibleSectionId);
+            }
+        }, observerOptions);
+        
+        sections.forEach(section => observer.observe(section));
+        
+        function initializeActiveState() {
+            if (window.location.hash && window.location.hash.startsWith('#l2-')) {
+                const targetId = window.location.hash.substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    setTimeout(() => {
+                        targetElement.scrollIntoView({ behavior: 'auto', block: 'start' });
+                        setActiveNavItem(targetId);
+                    }, 100); 
+                }
+            } else if (sections.length > 0) {
+                let firstVisibleSection = null;
+                for (const section of sections) {
+                    const rect = section.getBoundingClientRect();
+                    if (rect.top >= 0 && rect.top < window.innerHeight) {
+                        firstVisibleSection = section;
+                        break;
+                    }
+                }
+                if (firstVisibleSection) setActiveNavItem(firstVisibleSection.getAttribute('id'));
+                else setActiveNavItem(sections[0].getAttribute('id'));
+            }
+        }
+        initializeActiveState();
+    });
+</script>
+</body>
+</html>

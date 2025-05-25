@@ -72,7 +72,8 @@
             <nav>
                 <ul id="main-nav">
                     <li class="mb-2">
-                        <a href="lesson1.html" data-lesson="lesson1" class="nav-link bg-primary text-white block py-2 px-4 rounded-md font-medium">
+                        <!-- Lesson 1 link - standard styling, not active on index page -->
+                        <a href="lesson1.html" data-lesson="lesson1" class="nav-link text-[#E5E7EB] hover:text-primary hover:bg-primary/10 block py-2 px-4 rounded-md font-medium">
                             שיעור 1: יסודות ואסטרטגיה
                         </a>
                         <ul class="mt-2 mr-4 pr-3 border-r-2 border-primary/30">
@@ -109,11 +110,74 @@
                         </ul>
                     </li>
                     <li class="mb-2 mt-6">
-                        <a href="#" class="text-[#9CA3AF] italic block py-2 px-4 rounded-md font-medium opacity-70 cursor-not-allowed">
-                            שיעור 2 (בקרוב)
+                        <!-- Lesson 2 link - standard styling, not active on index page -->
+                        <a href="lesson2.html" data-lesson="lesson2" class="nav-link text-[#E5E7EB] hover:text-primary hover:bg-primary/10 block py-2 px-4 rounded-md font-medium">
+                            שיעור 2: איסוף מידע ואימות
                         </a>
+                        <ul class="mt-2 mr-4 pr-3 border-r-2 border-primary/30" id="lesson2-subnav-index">
+                            <li class="mb-1">
+                                <a href="lesson2.html#l2-intro" class="text-[#9CA3AF] hover:text-[#E5E7EB] hover:bg-primary/10 block py-2 px-3 rounded-md transition">
+                                    1. מבוא ומה נלמד
+                                </a>
+                            </li>
+                            <li class="mb-1">
+                                <a href="lesson2.html#l2-critical-thinking" class="text-[#9CA3AF] hover:text-[#E5E7EB] hover:bg-primary/10 block py-2 px-3 rounded-md transition">
+                                    2. חשיבה ביקורתית עם AI
+                                </a>
+                            </li>
+                            <li class="mb-1">
+                                <a href="lesson2.html#l2-search-overview" class="text-[#9CA3AF] hover:text-[#E5E7EB] hover:bg-primary/10 block py-2 px-3 rounded-md transition">
+                                    3. סוגי חיפוש AI
+                                </a>
+                            </li>
+                             <li class="mb-1">
+                                <a href="lesson2.html#l2-prompting-search" class="text-[#9CA3AF] hover:text-[#E5E7EB] hover:bg-primary/10 block py-2 px-3 rounded-md transition">
+                                    4. פרומפטים לחיפוש
+                                </a>
+                            </li>
+                            <li class="mb-1">
+                                <a href="lesson2.html#l2-basic-search-tools" class="text-[#9CA3AF] hover:text-[#E5E7EB] hover:bg-primary/10 block py-2 px-3 rounded-md transition">
+                                    5. חיפוש בסיסי וכלים
+                                </a>
+                            </li>
+                            <li class="mb-1">
+                                <a href="lesson2.html#l2-academic-search-tools" class="text-[#9CA3AF] hover:text-[#E5E7EB] hover:bg-primary/10 block py-2 px-3 rounded-md transition">
+                                    6. חיפוש אקדמי וכלים
+                                </a>
+                            </li>
+                            <li class="mb-1">
+                                <a href="lesson2.html#l2-deep-research-methods" class="text-[#9CA3AF] hover:text-[#E5E7EB] hover:bg-primary/10 block py-2 px-3 rounded-md transition">
+                                    7. מחקר עומק: שיטות וכלים
+                                </a>
+                            </li>
+                            <li class="mb-1">
+                                <a href="lesson2.html#l2-info-organization-learning" class="text-[#9CA3AF] hover:text-[#E5E7EB] hover:bg-primary/10 block py-2 px-3 rounded-md transition">
+                                    8. ארגון מידע ולמידה פעילה
+                                </a>
+                            </li>
+                             <li class="mb-1">
+                                <a href="lesson2.html#l2-validation" class="text-[#9CA3AF] hover:text-[#E5E7EB] hover:bg-primary/10 block py-2 px-3 rounded-md transition">
+                                    9. טכניקה: אימות מידע
+                                </a>
+                            </li>
+                            <li class="mb-1">
+                                <a href="lesson2.html#l2-digital-marketing-task" class="text-[#9CA3AF] hover:text-[#E5E7EB] hover:bg-primary/10 block py-2 px-3 rounded-md transition">
+                                    10. משימת מחקר: שיווק
+                                </a>
+                            </li>
+                             <li class="mb-1">
+                                <a href="lesson2.html#l2-exercises" class="text-[#9CA3AF] hover:text-[#E5E7EB] hover:bg-primary/10 block py-2 px-3 rounded-md transition">
+                                    11. תרגילים
+                                </a>
+                            </li>
+                            <li class="mb-1">
+                                <a href="lesson2.html#l2-next" class="text-[#9CA3AF] hover:text-[#E5E7EB] hover:bg-primary/10 block py-2 px-3 rounded-md transition">
+                                    12. מבט קדימה
+                                </a>
+                            </li>
+                        </ul>
                     </li>
-                    <li class="mb-2">
+                    <li class="mb-2 mt-6">
                         <a href="#" class="text-[#9CA3AF] italic block py-2 px-4 rounded-md font-medium opacity-70 cursor-not-allowed">
                             שיעור 3 (בקרוב)
                         </a>
@@ -166,11 +230,11 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Handle link clicks to load lesson content
-            document.querySelectorAll('.nav-link').forEach(link => {
+            document.querySelectorAll('.nav-link, #lesson2-subnav-index a').forEach(link => {
                 link.addEventListener('click', function(e) {
                     e.preventDefault();
                     const lessonPath = this.getAttribute('href');
-                    if (lessonPath && !this.classList.contains('cursor-not-allowed')) {
+                    if (lessonPath && !this.classList.contains('cursor-not-allowed') && lessonPath !== '#') {
                         window.location.href = lessonPath;
                     }
                 });
